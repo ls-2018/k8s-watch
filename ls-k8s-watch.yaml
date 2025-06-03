@@ -1,0 +1,135 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ls-k8s-watch
+  namespace: ls-k8s-watch
+  labels:
+    app: k8s-resources-watch
+    k8s-resources-watch: k8s-resources-watch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-resources-watch
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: k8s-resources-watch
+      annotations:
+        ca.crt: |
+          -----BEGIN CERTIFICATE-----
+          MIIDFDCCAfygAwIBAgIIaVZA7sxmLTUwDQYJKoZIhvcNAQELBQAwGjEYMBYGA1UE
+          AxMPd2ViaG9vay1jZXJ0LWNhMB4XDTI1MDYwMzAyMTUxN1oXDTM1MDYwMTAyMTUx
+          N1owGjEYMBYGA1UEAxMPd2ViaG9vay1jZXJ0LWNhMIIBIjANBgkqhkiG9w0BAQEF
+          AAOCAQ8AMIIBCgKCAQEA6u8NdMuajFA+g7gQoeQG1oZSbLTf4i2yDCnh1d0T+7xy
+          G4qu+NNocGR/4oY3XDpAuDwRcDOyNOnYl5JAOszF/FL8yrtNd8nOWR0yervtuMbd
+          apD0y5zMP/Wot2+Hfowd4uEcfiCWOcqE2U8Yx/SNgAxbpWJyZHmHxWvopQgegmX0
+          fBEVZKkMkmbRFQFMnkOTArY4Ay8MxxGmpk7bligYbnYubCkqN8ZlipUqsdUineMJ
+          d0tIeDhV4u7I9J8zTJb8Pn4xQdSgc6Rmt9nX2ypbFJVitb3kFEYYii23BquEbIC3
+          SAM/Ztd/5ruKrWFgNOVngEw9m4aajesWiIvOs3ESHQIDAQABo14wXDAOBgNVHQ8B
+          Af8EBAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUl+ksL9SmG3OOUI5h
+          rPBFjxyVHZEwGgYDVR0RBBMwEYIPd2ViaG9vay1jZXJ0LWNhMA0GCSqGSIb3DQEB
+          CwUAA4IBAQBGnGnzpdgWcq7p/BbY/dZoVZlSJ4H/oF7xq/fHi9OhRv3Fk0syjeOk
+          sTYDonHLzu65yiBYwgP30eCIijJQ8mmLHlxaxIQD/Ww4oTgYEyFUaUof9rmwOmGg
+          QO9bS9KjsHu6Q64YLjqGn0sZqqrCccmyZ+dXCwwI01IWNPkxb3H+tQgBETE7xDZr
+          do/PBpyfMMO/PEP3L7E1x0NHGyTbRS19XHdGXMD+zj7b8o1qVPnpAymOtVhgPVyj
+          L6L3Rt4Pk9Aq4t0XLaMzYIOYp3OhwgGOjOZm6cYlhwgdfzWeue3D0BvEBwSMww8j
+          +V5vufEl/8RjZf5YmbxMTIGmzQ10YS06
+          -----END CERTIFICATE-----
+        key.pem: |
+          -----BEGIN RSA PRIVATE KEY-----
+          MIIEpAIBAAKCAQEAvmJk9hSkSmqEIyBLQmd0P4LzF/0LIxf9JfKdpa4Bb98KoCgS
+          w0OliSU91iestcXrKd+xKTlAtWTJ6Udl7TzkKOsIKtv1BQDd7b/OT9bWb2i0VHVS
+          XRCzmCM5LkMs8jbxdN1YuSSoEYI8MYYoF5YZr1ieMsS03RpRBiSaG+Hx63FJ984t
+          TdRzpVNjjimT2rZajFpzEcrTMOV8rsn1Ie8eakLqW8QtBdWH0T8+yDjHjQ8JuafW
+          626tUGHKX4XS+AIC5+D6ddJF+pCin6GcMSQRzc9Z59+PwylLhCGRR9BQ07lkmuFv
+          +KHEs/M7P6lcKsMSDd7d33B5VnJWROfv3NjPnQIDAQABAoIBAAQ0SYz6nzcqe4EI
+          E0lj3fgSFPq0YpTTkIpQPYV9XnhBOWuYfvOTcJoi+abbSO/Zr0wFLdUed8yZrXDK
+          nBhdVh+GMy+5HEPQRVZc/DocoS8kJYlQ7vDxr7meG4LnRlyR9IqTYcRy6Ag880XX
+          s9ZzgN0zrIir+d+BF4V2dPXFK1G67LnCmpm3KJKBjcj+oFk/WInuu9uPHTkOtzbN
+          humQIiVf94DlohU7MY00rDPdB9SInSVpU0pxGXjOWG8VxFThCw86LCBiUFthFRxm
+          6LQb+sscGNSblXid09+XuRDpwtzzuFyIU5FUywftSqKdNJCk8USAXESA7caoAKRn
+          3+9CHdECgYEA2AauDS/kyRPrVtsfwMirr112cFtdVMdlsR2d9skBPGFAE2ofZawo
+          eghmJrGZeqAssWy770y7iTcZp1ihZdNhi0yX6K3gZE5AFEp+8904yfnjveLdIC8A
+          dqtmUgCnmmPxGmqZxylhIIM9xGTumWId5TKEPEAnWFt6kYLKQ6MojS0CgYEA4Z0L
+          uDpH4dDuTLlVYg/XJNUSewhU20qv/j3ysDEId64o2QCRA96lcR/hjoIKPSB06Iwp
+          6YS3fXGJXaITRaCO91wYft3BucA5ppzys9J+YSatwPPpK9b4UmgJiTFYEc4uYv8d
+          w33dY0cpIzQV9XG/gLYYvMxmwI/QOckORIBvMjECgYAKcHAyxPC6YtMJlHc5Wrkp
+          NUwG6/NbqHMalwLOLTJ5F34AMi2oPSSLmSJOlmCDU4A1ZrrCOqQJYndD5f2OrSNW
+          lvH0VYq1bi6cjGkMIdGfuQqvX2ouJvdPxMKiDdQLmu7IxwP9YtuFtbHjbrk1Ak/N
+          hp5rRvJfy7Plmjtp/1VzVQKBgQCaZA4RFFD8hy2L84gqgwyHeAgdiaYIKyQkp9/c
+          ErHotJXfajPSoho1P8vq6bJ4Ai3+tWw5EUk/3uJR4QevLiCnxa49oyNfKdxJ2D1+
+          MR2q/f0JfeCiz4k/W1KrP8k05hN4S3zius81kQzluk8Ml7qlKffjuzzVqZSk9qF8
+          3yc5AQKBgQCshgNCfmnH7bDLJHAaM+wWiL+UtLkeEBorR+O0oAHVSTV7JC2x2L4g
+          dYlAR6z29U54UcRppRUKcQKeN8dg8VfdVsH91/4oZWuxPguura6dOaZ9dMLmzkem
+          SY7QzfCPWfdRm580Z8oWplL9SiRDr+TY6y0rBqwvssQw+c5CLoetmA==
+          -----END RSA PRIVATE KEY-----
+        server.pem: |
+          -----BEGIN CERTIFICATE-----
+          MIIDQTCCAimgAwIBAgIIOlAtZof74EIwDQYJKoZIhvcNAQELBQAwGjEYMBYGA1UE
+          AxMPd2ViaG9vay1jZXJ0LWNhMB4XDTI1MDYwMzAyMTUxN1oXDTM1MDYwMTAyMTUx
+          N1owKDEmMCQGA1UEAxMdbHMtazhzLXdhdGNoLmxzLWs4cy13YXRjaC5zdmMwggEi
+          MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC+YmT2FKRKaoQjIEtCZ3Q/gvMX
+          /QsjF/0l8p2lrgFv3wqgKBLDQ6WJJT3WJ6y1xesp37EpOUC1ZMnpR2XtPOQo6wgq
+          2/UFAN3tv85P1tZvaLRUdVJdELOYIzkuQyzyNvF03Vi5JKgRgjwxhigXlhmvWJ4y
+          xLTdGlEGJJob4fHrcUn3zi1N1HOlU2OOKZPatlqMWnMRytMw5XyuyfUh7x5qQupb
+          xC0F1YfRPz7IOMeNDwm5p9brbq1QYcpfhdL4AgLn4Pp10kX6kKKfoZwxJBHNz1nn
+          34/DKUuEIZFH0FDTuWSa4W/4ocSz8zs/qVwqwxIN3t3fcHlWclZE5+/c2M+dAgMB
+          AAGjfTB7MA4GA1UdDwEB/wQEAwIFoDATBgNVHSUEDDAKBggrBgEFBQcDATAfBgNV
+          HSMEGDAWgBSX6Swv1KYbc45QjmGs8EWPHJUdkTAzBgNVHREELDAqgglsb2NhbGhv
+          c3SCHWxzLWs4cy13YXRjaC5scy1rOHMtd2F0Y2guc3ZjMA0GCSqGSIb3DQEBCwUA
+          A4IBAQBvu5o81p91YU0OCDs3IjGNKgSJWXisGI2dLmSMBgZuj++ed/oOIAqCt1Ok
+          ehNbFQTvZvPwW6wR0eKKwWUEs2P/QS3R7/nFV2Pwho4ZJF8L0rEjoJE7u4rLK643
+          eW4g+/v9m39E+/00jwjKI3JgahrMK9sxXh778mn9nNgHckNlekGp0xU/B1NWYvQ7
+          Q6cJdi9jKfYZrBoeMaLtRdb14o72rL6davKJ5yXXqZZRta0XgnrL//4GwurWNmT1
+          Dwb/Ih7+l6Oxhuc0p5p1UY9xnF15/SNUSBKvkCBE7aizgq1DgKpgAPLHP3AOBfPz
+          UKmL7/AbJ0Go11e9qdai+jd67dbt
+          -----END CERTIFICATE-----
+        template: spec.replicas
+    spec:
+      volumes:
+        - name: certs
+          downwardAPI:
+            items:
+              - path: ca.crt
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.annotations['ca.crt']
+                mode: 438
+              - path: key.pem
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.annotations['key.pem']
+                mode: 438
+              - path: server.pem
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.annotations['server.pem']
+                mode: 438
+            defaultMode: 420
+      containers:
+        - name: k8s-watch
+          image: registry.cn-hangzhou.aliyuncs.com/ls-2018/k8s-watch-server:latest
+          args:
+            - server
+          resources: {}
+          volumeMounts:
+            - name: certs
+              mountPath: /certs
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: ls-k8s-watch
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

@@ -1,0 +1,3 @@
+lastContext:
+    namespace: ls-k8s-watch
+    context: kind-koord
