@@ -40,14 +40,11 @@ func init() {
 	// when this action is called directly.
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 
-	rootCmd.PersistentFlags().StringVar(&kubeconfig, "kubeconfig", os.ExpandEnv("$HOME/.kube/kind-koord"), "kubeconfig path config file (default is $HOME/.kube/kind-koord)")
-	rootCmd.MarkFlagRequired("kubeconfig")
 }
 
 var (
 	// Used for flags.
-	cfgFile    string
-	kubeconfig string
+	cfgFile string
 )
 
 func initConfig() {

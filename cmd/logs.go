@@ -82,7 +82,7 @@ var logsCmd = &cobra.Command{
 		}
 		defer stream.Close()
 
-		buf := make([]byte, 1024)
+		buf := make([]byte, 1024*10*10)
 		t := fmt.Sprintf("template:%s", base64.StdEncoding.EncodeToString([]byte(template)))
 		for {
 			n, err := stream.Read(buf)

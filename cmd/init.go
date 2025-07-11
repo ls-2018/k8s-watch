@@ -36,8 +36,10 @@ var initCmd = &cobra.Command{
 	Short: "Initialize the resources related to the watch",
 	Long:  `Initialize the resources related to the watch`,
 	Run: func(cmd *cobra.Command, args []string) {
-
-		cfg, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+		cfg, err := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(
+			clientcmd.NewDefaultClientConfigLoadingRules(),
+			&clientcmd.ConfigOverrides{},
+		).ClientConfig()
 		if err != nil {
 			klog.Fatal(err)
 		}
@@ -107,7 +109,11 @@ type Hook struct {
 }
 
 func NewHook() *Hook {
-	cfg, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+	cfg, err := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(
+		clientcmd.NewDefaultClientConfigLoadingRules(),
+		&clientcmd.ConfigOverrides{},
+	).ClientConfig()
+	
 	if err != nil {
 		klog.Fatal(err)
 	}
